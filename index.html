@@ -1,15 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="style.css">
-</head>
-<body>
-        <div class="main">
-                Hello
-        </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="time">
+      <div class="circle" style="--clr: red">
+        <svg>
+          <circle cx="70" cy="70" r="70"></circle>
+          <circle cx="70" cy="70" r="70" id="hh"></circle>
+        </svg>
+        <div id="hours">00</div>
+      </div>
+      <div class="circle" style="--clr: yellow">
+        <svg>
+          <circle cx="70" cy="70" r="70"></circle>
+          <circle cx="70" cy="70" r="70" id="mm"></circle>
+        </svg>
+        <div id="minutes">00</div>
+      </div>
+      <div class="circle" style="--clr: rgb(11, 244, 124)">
+        <svg>
+          <circle cx="70" cy="70" r="70"></circle>
+          <circle cx="70" cy="70" r="70" id="ss"></circle>
+        </svg>
+        <div id="second">00</div>
+      </div>
+    </div>
+  </body>
+  <script>
+    setInterval(() => {
+      let h = document.getElementById("hours");
+      let m = document.getElementById("minutes");
+      let s = document.getElementById("second");
+
+      let hh = document.getElementById("hh");
+      let mm = document.getElementById("mm");
+      let ss = document.getElementById("ss");
+//       console.log(hh,mm,ss);
+      let hours = new Date().getHours();
+      h.innerHTML = hours;
+      
+      let mins =  new Date().getMinutes();
+      m.innerHTML = mins
+      let secs = new Date().getSeconds();
+      s.innerHTML = secs
+      hh.style.strokeDashoffset = 440 - (440 * hours) / 24;
+      mm.style.strokeDashoffset = 440 - (440 * mins) / 60;
+      ss.style.strokeDashoffset = 440 - (440 * secs) / 60;
+    }, 1000);
+  </script>
 </html>
